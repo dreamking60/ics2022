@@ -122,12 +122,12 @@ static int cmd_si(char *args) {
 
   //Too Many arguments
   if(strtok(NULL, " ") != NULL) {
-    printf("Too many arguments!");
+    printf("Too many arguments!\n");
     return 0;
   }
   //Check the arguments
   if(steps <= 0 || steps >= 20) {
-    printf("Too big steps for si! Not Reconmend!");
+    printf("Too big steps for si! Not Reconmend!\n");
     return 0;
   }
 
@@ -137,6 +137,27 @@ static int cmd_si(char *args) {
 }
 
 static int cmd_info(char *args) {
+  //No arguments
+  if(args == NULL) {
+    printf("Without arguments! Input \"info r\" for info the register message!\n");
+    return 0;
+  }
+  //Get the argument
+  char *arg = strtok(NULL, " ");
+  
+  //Too Many arguments
+  if(strtok(NULL, " ") != NULL) {
+    printf("Too many arguments!\n");
+    return 0;
+  }
+
+  //Check the argument
+  if(strcmp(arg, "r") == 0) {
+    isa_reg_display();
+  } else {
+    printf("Invalid info arguments!\n");
+  }
+
   return 0;
 }
 
