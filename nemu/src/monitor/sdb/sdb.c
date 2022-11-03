@@ -111,6 +111,28 @@ static int cmd_help(char *args) {
 }
 
 static int cmd_si(char *args) {
+  //default: run one instruction
+  if(args == NULL) {
+    cpu_exec(1);
+    return 0;
+  }
+  //Get the arguments
+  char *arg = strtok(NULL, " ");
+  int steps = atoi(arg);
+
+  //Too Many arguments
+  if(strtok(NULL, " ") != NULL) {
+    printf("Too many arguments!");
+    return 0;
+  }
+  //Check the arguments
+  if(steps <= 0 || steps >= 20) {
+    printf("Too big steps for si! Not Reconmend!");
+    return 0;
+  }
+
+  //Argsment: run n instructions
+  cpu_exec(steps);
   return 0;
 }
 
