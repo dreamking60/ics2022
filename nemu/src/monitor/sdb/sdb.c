@@ -162,6 +162,12 @@ static int cmd_info(char *args) {
 }
 
 static int cmd_x(char *args) {
+  //No argument
+  if( args == NULL) {
+    printf("Without arguments!");
+    return 0;
+  }
+
   return 0;
 }
 
